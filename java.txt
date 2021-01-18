@@ -1,0 +1,504 @@
+基本语法
+1.编写 Java 程序时，应注意以下几点：
+大小写敏感：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。
+类名：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 MyFirstJavaClass 。
+方法名：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。
+源文件名：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 .java。
+如果文件名和类名不相同则会导致编译错误）。
+主方法入口：所有的 Java 程序由 public static void main(String []args) 方法开始执行。
+
+
+2.Java作为一种面向对象语言。支持以下基本概念：多态，继承，封装，抽象，对象，实例，方法，重载
+
+3.引用类型
+在Java中，引用类型的变量非常类似于C/C++的指针。引用类型指向一个对象，指向对象的变量是引用变量。这些变量在声明时被指定为一个特定的类型，比如 Employee、Puppy 等。变量一旦声明后，类型就不能被改变了。
+对象、数组都是引用数据类型。
+所有引用类型的默认值都是null。
+一个引用变量可以用来引用任何与之兼容的类型。
+例子：Site site = new Site("Runoob")。
+
+
+4.引用类型是一个对象类型，它的值是指向内存空间的引用，就是地址，所指向的内存中保存着变量所表示的一个值或一组值。
+int a;
+a = 250; // 声明变量a的同时，系统给a分配了空间。
+引用类型就不是了，只给变量分配了引用空间，数据空间没有分配，因为不知道数据是什么。
+错误的例子：
+MyDate today;
+today.day = 4; // 发生错误，因为today对象的数据空间未分配。
+引用类型变量在声明后必须通过实例化开辟数据空间，才能对变量所指向的对象进行访问。
+MyDate today;          //将变量分配一个保存引用的空间
+today = new MyDate();     // 这句话是2步，首先执行new MyDate（），给today变量开辟数据空间，然后再执行赋值操作
+引用变量赋值：
+MyDate a，b;       // 在内存开辟两个引用空间
+a = new MyDate();       // 开辟MyDate对象的数据空间，并把该空间的首地址赋给a
+b = a;                   // 将a存储空间中的地址写到b的存储空间中
+
+
+5.源文件声明规则
+在本节的最后部分，我们将学习源文件的声明规则。当在一个源文件中定义多个类，并且还有import语句和package语句时，要特别注意这些规则。
+一个源文件中只能有一个public类
+一个源文件可以有多个非public类
+源文件的名称应该和public类的类名保持一致。例如：源文件中public类的类名是Employee，那么源文件应该命名为Employee.java。
+如果一个类定义在某个包中，那么package语句应该在源文件的首行。
+如果源文件包含import语句，那么应该放在package语句和类定义之间。如果没有package语句，那么import语句应该在源文件中最前面。
+import语句和package语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。
+类有若干种访问级别，并且类也分不同的类型：抽象类和final类等。这些将在访问控制章节介绍。
+除了上面提到的几种类型，Java还有一些特殊的类，如：内部类、匿名类。
+
+6.Java包
+包主要用来对类和接口进行分类。当开发Java程序时，可能编写成百上千的类，因此很有必要对类和接口进行分类。
+Import语句
+在Java中，如果给出一个完整的限定名，包括包名、类名，那么Java编译器就可以很容易地定位到源代码或者类。
+Import语句就是用来提供一个合理的路径，使得编译器可以找到某个类。
+例如，下面的命令行将会命令编译器载入java_installation/java/io路径下的所有类
+import java.io.*;
+
+7.类的构造方法
+1、构造方法的名字和类名相同，并且没有返回值。
+2、构造方法主要用于为类的对象定义初始化状态。
+3、我们不能直接调用构造方法，必须通过new关键字来自动调用，从而创建类的实例。
+4、Java的类都要求有构造方法，如果没有定义构造方法，Java编译器会为我们提供一个缺省的构造方法，也就是不带参数的构造方法。
+new关键字的作用
+1、为对象分配内存空间。
+2、引起对象构造方法的调用。
+3、为对象返回一个引用。
+
+8.Java 中 this 和 super 的用法总结。
+ this 指向对象本身的指针，形参与成员名字重名，用 this 来区分。
+ super 超（父）类对象的一个指针。
+
+9.Java语言支持的变量类型有：
+类变量：独立于方法之外的变量，用 static 修饰。
+实例变量：独立于方法之外的变量，不过没有 static 修饰。
+局部变量：类的方法中的变量。
+
+10.Java 局部变量
+局部变量声明在方法、构造方法或者语句块中；
+局部变量在方法、构造方法、或者语句块被执行的时候创建，当它们执行完成后，变量将会被销毁；
+访问修饰符不能用于局部变量；
+局部变量只在声明它的方法、构造方法或者语句块中可见；
+局部变量是在栈上分配的。
+局部变量没有默认值，所以局部变量被声明后，必须经过初始化，才可以使用。
+
+11.实例变量
+实例变量声明在一个类中，但在方法、构造方法和语句块之外；
+当一个对象被实例化之后，每个实例变量的值就跟着确定；
+实例变量在对象创建的时候创建，在对象被销毁的时候销毁；
+实例变量的值应该至少被一个方法、构造方法或者语句块引用，使得外部能够通过这些方式获取实例变量信息；
+实例变量可以声明在使用前或者使用后；
+访问修饰符可以修饰实例变量；
+实例变量对于类中的方法、构造方法或者语句块是可见的。一般情况下应该把实例变量设为私有。通过使用访问修饰符可以使实例变量对子类可见；
+实例变量具有默认值。数值型变量的默认值是0，布尔型变量的默认值是false，引用类型变量的默认值是null。变量的值可以在声明时指定，也可以在构造方法中指定；
+实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObejectReference.VariableName。
+
+12.类变量（静态变量）
+类变量也称为静态变量，在类中以 static 关键字声明，但必须在方法之外。
+无论一个类创建了多少个对象，类只拥有类变量的一份拷贝。
+静态变量除了被声明为常量外很少使用。常量是指声明为public/private，final和static类型的变量。常量初始化后不可改变。
+静态变量储存在静态存储区。经常被声明为常量，很少单独使用static声明变量。
+静态变量在第一次被访问时创建，在程序结束时销毁。
+与实例变量具有相似的可见性。但为了对类的使用者可见，大多数静态变量声明为public类型。
+默认值和实例变量相似。数值型变量默认值是0，布尔型默认值是false，引用类型默认值是null。变量的值可以在声明的时候指定，也可以在构造方法中指定。此外，静态变量还可以在静态语句块中初始化。
+静态变量可以通过：ClassName.VariableName的方式访问。
+类变量被声明为public static final类型时，类变量名称一般建议使用大写字母。如果静态变量不是public和final类型，其命名方式与实例变量以及局部变量的命名方式一致。
+
+13.Java 中静态变量和实例变量区别
+ 静态变量属于类，该类不生产对象，通过类名就可以调用静态变量。
+ 实例变量属于该类的对象，必须产生该类对象，才能调用实例变量。
+在程序运行时的区别：
+实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。
+ 静态变量不属于某个实例对象，而是属于类，所以也称为类变量，只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被分配空间，静态变量就可以被使用了。
+总之，实例变量必须创建对象后才可以通过这个对象来使用，静态变量则可以直接使用类名来引用。
+
+14.类变量赋值方法
+无final修饰，声明时赋值，构造器中赋值，静态语句块或静态方法赋值
+有final修饰，声明时赋值，声明与赋值分开可在静态语句块中赋值
+
+
+15.Java 修饰符
+Java语言提供了很多修饰符，主要分为以下两类：
+访问修饰符
+非访问修饰符
+修饰符用来定义类、方法或者变量，通常放在语句的最前端。
+
+15.1访问控制修饰符（类似于c关键字）
+Java中，可以使用访问控制符来保护对类、变量、方法和构造方法的访问。Java 支持 4 种不同的访问权限。
+default (即默认，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。
+private : 在同一类内可见。使用对象：变量、方法。 注意：不能修饰类（外部类）
+public : 对所有类可见。使用对象：类、接口、变量、方法
+protected : 对同一包内的类和所有子类可见。使用对象：变量、方法。 注意：不能修饰类（外部类）。
+我们可以通过以下表来说明访问权限：
+访问控制
+修饰符	当前类	同一包内	子孙类(同一包)	子孙类(不同包)	其他包
+public	Y	Y	Y	Y	Y
+protected	Y	Y	Y	Y/N	N
+default	Y	Y	Y	N	N
+private	Y	N	N	N	N
+
+受保护的访问修饰符-protected
+protected 需要从以下两个点来分析说明：
+子类与基类在同一包中：被声明为 protected 的变量、方法和构造器能被同一个包中的任何其他类访问；
+子类与基类不在同一包中：那么在子类中，子类实例可以访问其从基类继承而来的 protected 方法，而不能访问基类实例的protected方法。
+protected 可以修饰数据成员，构造方法，方法成员，不能修饰类（内部类除外）。
+接口及接口的成员变量和成员方法不能声明为 protected。
+子类能访问 protected 修饰符声明的方法和变量，这样就能保护不相关的类使用这些方法和变量。
+
+访问控制和继承
+请注意以下方法继承的规则：
+父类中声明为 public 的方法在子类中也必须为 public。
+父类中声明为 protected 的方法在子类中要么声明为 protected，要么声明为 public，不能声明为 private。
+父类中声明为 private 的方法，不能够被继承。
+
+15.2非访问修饰符
+为了实现一些其他的功能，Java 也提供了许多非访问修饰符。
+static 修饰符，用来修饰类方法和类变量。
+final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。
+abstract 修饰符，用来创建抽象类和抽象方法。
+synchronized 和 volatile 修饰符，主要用于线程的编程。
+
+static 修饰符
+静态变量：
+static 关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
+静态方法：
+static 关键字用来声明独立于对象的静态方法。静态方法不能使用类的非静态变量。静态方法从参数列表得到数据，然后计算这些数据。
+
+final 修饰符
+final 变量：
+final 表示"最后的、最终的"含义，变量一旦赋值后，不能被重新赋值。被 final 修饰的实例变量必须显式指定初始值。
+final 修饰符通常和 static 修饰符一起使用来创建类常量。
+final 类
+final 类不能被继承，没有类能够继承 final 类的任何特性。
+final修饰的变量有三种：静态变量、实例变量和局部变量，分别表示三种类型的常量。
+final变量定义的时候，可以先声明，而不给初值，这中变量也称为final空白，无论什么情况，编译器都确保空白final在使用之前必须被初始化。
+但是，final空白在final关键字final的使用上提供了更大的灵活性，为此，一个类中的final数据成员就可以实现依对象而有所不同，却有保持其恒定不变的特征
+
+abstract 修饰符
+抽象类：
+抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充。
+一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
+抽象类可以包含抽象方法和非抽象方法。
+抽象方法
+抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。
+抽象方法不能被声明成 final 和 static。
+任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。
+如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
+抽象方法的声明以分号结尾，例如：public abstract sample();
+
+fina、static、abstract 之间不能同时使用的问题
+1、final 不能同时和 abstract 使用，2、static 和 abstract 也是不能连用的
+synchronized 修饰符
+synchronized 关键字声明的方法同一时间只能被一个线程访问。synchronized 修饰符可以应用于四个访问修饰符。
+
+transient 修饰符
+序列化的对象包含被 transient 修饰的实例变量时，java 虚拟机(JVM)跳过该特定的变量。
+该修饰符包含在定义变量的语句中，用来预处理类和变量的数据类型。
+
+volatile 修饰符
+volatile 修饰的成员变量在每次被线程访问时，都强制从共享内存中重新读取该成员变量的值。
+而且，当成员变量发生变化时，会强制线程将变化值回写到共享内存。这样在任何时刻，两个不同的线程总是看到某个成员变量的同一个值。
+一个 volatile 对象引用可能是 null。
+
+16.instanceof 运算符
+该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。
+instanceof运算符使用格式如下：
+( Object reference variable ) instanceof  (class/interface type)
+如果运算符左侧变量所指的对象，是操作符右侧类或接口(class/interface)的一个对象，那么结果为真。
+下面是一个例子：
+String name = "James";
+boolean result = name instanceof String; // 由于 name 是 String 类型，所以返回真
+
+17.Java Number & Math 类
+17.1在实际开发过程中，我们经常会遇到需要使用对象，而不是内置数据类型的情形。为了解决这个问题，Java 语言为每一个内置数据类型提供了对应的包装类。
+所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类 Number 的子类。
+这种由编译器特别支持的包装称为装箱，所以当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象拆箱为内置类型。
+* java中的自动装箱与拆箱
+* 简单一点说，装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型。
+Number 类属于 java.lang 包。
+byte、int、long、double 等为 java 的基础数据类型。
+所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类 Number 的子类。
+17.2Java Math 类
+Java 的 Math 包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数。
+Math 的方法都被定义为 static 形式，通过 Math 类可以在主函数中直接调用。Math.类所包含的东西
+
+17.3Number & Math 类方法
+下面的表中列出的是 Number & Math 类常用的一些方法：
+	方法与描述
+	xxxValue()
+将 Number 对象转换为xxx数据类型的值并返回。
+
+	compareTo()
+将number对象与参数比较。
+	equals()
+判断number对象是否与参数相等。
+	valueOf()
+返回一个 Number 对象指定的内置数据类型
+	toString()
+以字符串形式返回值。
+	parseInt()
+将字符串解析为int类型。
+	abs()
+返回参数的绝对值。
+	ceil()
+返回大于等于( >= )给定参数的的最小整数，类型为双精度浮点型。
+	floor()
+返回小于等于（<=）给定参数的最大整数 。
+	rint()
+返回与参数最接近的整数。返回类型为double。
+	round()
+它表示四舍五入，算法为 Math.floor(x+0.5)，即将原来的数字加上 0.5 后再向下取整，所以，Math.round(11.5) 的结果为12，Math.round(-11.5) 的结果为-11。
+	min()
+返回两个参数中的最小值。
+	max()
+返回两个参数中的最大值。
+	exp()
+返回自然数底数e的参数次方。
+	log()
+返回参数的自然数底数的对数值。
+	pow()
+返回第一个参数的第二个参数次方。
+	sqrt()
+求参数的算术平方根。
+	sin()
+求指定double类型参数的正弦值。
+	cos()
+求指定double类型参数的余弦值。
+	tan()
+求指定double类型参数的正切值。
+	asin()
+求指定double类型参数的反正弦值。
+	acos()
+求指定double类型参数的反余弦值。
+	atan()
+求指定double类型参数的反正切值。
+	atan2()
+将笛卡尔坐标转换为极坐标，并返回极坐标的角度值。
+	toDegrees()
+将参数转化为角度。
+	toRadians()
+将角度转换为弧度。
+	random() 
+返回一个随机数。
+
+18.Java String 类
+字符串广泛应用 在 Java 编程中，在 Java 中字符串属于对象，Java 提供了 String 类来创建和操作字符串。
+注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。
+如果需要对字符串做很多修改，那么应该选择使用 StringBuffer & StringBuilder 类。
+连接字符串
+String 类提供了连接两个字符串的方法：
+string1.concat(string2);
+
+18.1String 方法
+下面是 String 类支持的方法，更多详细，参看 Java String API 文档:
+SN(序号)	方法描述
+1	char charAt(int index)
+返回指定索引处的 char 值。
+2	int compareTo(Object o)
+把这个字符串和另一个对象比较。
+3	int compareTo(String anotherString)
+按字典顺序比较两个字符串。
+4	int compareToIgnoreCase(String str)
+按字典顺序比较两个字符串，不考虑大小写。
+5	String concat(String str)
+将指定字符串连接到此字符串的结尾。
+6	boolean contentEquals(StringBuffer sb)
+当且仅当字符串与指定的StringBuffer有相同顺序的字符时候返回真。
+7	static String copyValueOf(char[] data)
+返回指定数组中表示该字符序列的 String。
+8	static String copyValueOf(char[] data, int offset, int count)
+返回指定数组中表示该字符序列的 String。
+9	boolean endsWith(String suffix)
+测试此字符串是否以指定的后缀结束。
+10	boolean equals(Object anObject)
+将此字符串与指定的对象比较。
+11	boolean equalsIgnoreCase(String anotherString)
+将此 String 与另一个 String 比较，不考虑大小写。
+12	byte[] getBytes()
+ 使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。
+13	byte[] getBytes(String charsetName)
+使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。
+14	void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+将字符从此字符串复制到目标字符数组。
+15	int hashCode()
+返回此字符串的哈希码。
+16	int indexOf(int ch)
+返回指定字符在此字符串中第一次出现处的索引。
+17	int indexOf(int ch, int fromIndex)
+返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。
+18	int indexOf(String str)
+ 返回指定子字符串在此字符串中第一次出现处的索引。
+19	int indexOf(String str, int fromIndex)
+返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。
+20	String intern()
+ 返回字符串对象的规范化表示形式。
+21	int lastIndexOf(int ch)
+ 返回指定字符在此字符串中最后一次出现处的索引。
+22	int lastIndexOf(int ch, int fromIndex)
+返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。
+23	int lastIndexOf(String str)
+返回指定子字符串在此字符串中最右边出现处的索引。
+24	int lastIndexOf(String str, int fromIndex)
+ 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。
+25	int length()
+返回此字符串的长度。
+26	boolean matches(String regex)
+告知此字符串是否匹配给定的正则表达式。
+27	boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)
+测试两个字符串区域是否相等。
+28	boolean regionMatches(int toffset, String other, int ooffset, int len)
+测试两个字符串区域是否相等。
+29	String replace(char oldChar, char newChar)
+返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。
+30	String replaceAll(String regex, String replacement)
+使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。
+31	String replaceFirst(String regex, String replacement)
+ 使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。
+32	String[] split(String regex)
+根据给定正则表达式的匹配拆分此字符串。
+33	String[] split(String regex, int limit)
+根据匹配给定的正则表达式来拆分此字符串。
+34	boolean startsWith(String prefix)
+测试此字符串是否以指定的前缀开始。
+35	boolean startsWith(String prefix, int toffset)
+测试此字符串从指定索引开始的子字符串是否以指定前缀开始。
+36	CharSequence subSequence(int beginIndex, int endIndex)
+ 返回一个新的字符序列，它是此序列的一个子序列。
+37	String substring(int beginIndex)
+返回一个新的字符串，它是此字符串的一个子字符串。
+38	String substring(int beginIndex, int endIndex)
+返回一个新字符串，它是此字符串的一个子字符串。
+39	char[] toCharArray()
+将此字符串转换为一个新的字符数组。
+40	String toLowerCase()
+使用默认语言环境的规则将此 String 中的所有字符都转换为小写。
+41	String toLowerCase(Locale locale)
+ 使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。
+42	String toString()
+ 返回此对象本身（它已经是一个字符串！）。
+43	String toUpperCase()
+使用默认语言环境的规则将此 String 中的所有字符都转换为大写。
+44	String toUpperCase(Locale locale)
+使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。
+45	String trim()
+返回字符串的副本，忽略前导空白和尾部空白。
+46	static String valueOf(primitive data type x)
+返回给定data type类型x参数的字符串表示形式。
+18.2
+Java：String、StringBuffer 和 StringBuilder 的区别
+String：字符串常量，字符串长度不可变。Java中String 是immutable（不可变）的。用于存放字符的数组被声明为final的，因此只能赋值一次，不可再更改。
+StringBuffer：字符串变量（Synchronized，即线程安全）。如果要频繁对字符串内容进行修改，出于效率考虑最好使用 StringBuffer，如果想转成 String 类型，可以调用 StringBuffer 的 toString() 方法。Java.lang.StringBuffer 线程安全的可变字符序列。在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。可将字符串缓冲区安全地用于多个线程。
+StringBuilder：字符串变量（非线程安全）。在内部 StringBuilder 对象被当作是一个包含字符序列的变长数组。
+基本原则：
+如果要操作少量的数据用 String ；
+单线程操作大量数据用StringBuilder ；
+多线程操作大量数据，用StringBuffer。
+
+众所周知，通过 new 关键字来生成对象是在堆区进行的，而在堆区进行对象生成的过程是不会去检测该对象是否已经存在的。
+因此通过 new 来创建对象，创建出的一定是不同的对象，即使字符串的内容是相同的。
+
+StringBuffer 方法
+以下是 StringBuffer 类支持的主要方法：
+序号	方法描述
+1	public StringBuffer append(String s)
+将指定的字符串追加到此字符序列。
+2	public StringBuffer reverse()
+ 将此字符序列用其反转形式取代。
+3	public delete(int start, int end)
+移除此序列的子字符串中的字符。
+4	public insert(int offset, int i)
+将 int 参数的字符串表示形式插入此序列中。
+5	replace(int start, int end, String str)
+使用给定 String 中的字符替换此序列的子字符串中的字符。
+
+19.java数组
+For-Each 循环
+JDK 1.5 引进了一种新的循环类型，被称为 For-Each 循环或者加强型循环，它能在不使用下标的情况下遍历数组。
+语法格式如下：
+for(type element: array)
+{
+    System.out.println(element);
+}
+
+
+20.java日期和时间
+date类：
+获取当前日期时间
+Java中获取当前日期和时间很简单，使用 Date 对象的 toString() 方法来打印当前日期和时间，如下所示：
+实例
+import java.util.Date;
+  
+public class DateDemo {
+   public static void main(String args[]) {
+       // 初始化 Date 对象
+       Date date = new Date();
+        
+       // 使用 toString() 函数显示日期时间
+       System.out.println(date.toString());
+   }
+}
+Calendar类：
+创建一个代表系统当前日期的Calendar对象
+Calendar c = Calendar.getInstance();//默认是当前日期
+创建一个指定日期的Calendar对象
+使用Calendar类代表特定的时间，需要首先创建一个Calendar的对象，然后再设定该对象中的年月日参数来完成。
+//创建一个代表2009年6月12日的Calendar对象
+Calendar c1 = Calendar.getInstance();
+c1.set(2009, 6 - 1, 12);
+
+21.Java 正则表达式
+正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个"规则字符串"，这个"规则字符串"用来表达对字符串的一种过滤逻辑。
+给定一个正则表达式和另一个字符串，我们可以达到如下的目的：
+ 1. 给定的字符串是否符合正则表达式的过滤逻辑（称作"匹配"）；
+ 2. 可以通过正则表达式，从字符串中获取我们想要的特定部分。
+正则表达式的特点是：
+ 1. 灵活性、逻辑性和功能性非常的强；
+ 2. 可以迅速地用极简单的方式达到字符串的复杂控制。
+ 3. 对于刚接触的人来说，比较晦涩难懂。
+注意：正则表达式写好后，没有错对之分，返回结果只是true和false
+
+java.util.regex 包主要包括以下三个类：
+Pattern 类：
+pattern 对象是一个正则表达式的编译表示。Pattern 类没有公共构造方法。要创建一个 Pattern 对象，你必须首先调用其公共静态编译方法，它返回一个 Pattern 对象。该方法接受一个正则表达式作为它的第一个参数。
+Matcher 类：
+Matcher 对象是对输入字符串进行解释和匹配操作的引擎。与Pattern 类一样，Matcher 也没有公共构造方法。你需要调用 Pattern 对象的 matcher 方法来获得一个 Matcher 对象。
+PatternSyntaxException：
+PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。
+
+
+22.多态的实现方式
+方式一：重写：
+这个内容已经在上一章节详细讲过，就不再阐述，详细可访问：Java 重写(Override)与重载(Overload)。
+方式二：接口
+1. 生活中的接口最具代表性的就是插座，例如一个三接头的插头都能接在三孔插座中，因为这个是每个国家都有各自规定的接口规则，有可能到国外就不行，那是因为国外自己定义的接口类型。
+2. java中的接口类似于生活中的接口，就是一些方法特征的集合，但没有方法的实现。具体可以看 java接口 这一章节的内容。
+方式三：抽象类和抽象方法
+详情请看 Java抽象类 章节。
+     对于多态，可以总结以下几点：
+一、使用父类类型的引用指向子类的对象；
+二、该引用只能调用父类中定义的方法和变量；
+三、如果子类中重写了父类中的一个方法，那么在调用这个方法的时候，将会调用子类中的这个方法；（动态连接、动态调用）;
+四、变量不能被重写（覆盖），”重写“的概念只针对方法，如果在子类中”重写“了父类中的变量，那么在编译时会报错
+      多态引用时，构造子类对象时的构造方法的调用顺序
+1，先调用超类的构造方法，多重超类首先调用最远超类的方法；
+2，然后再执行当前子类的构造方法；
+
+23.读取控制台输入
+Java 的控制台输入由 System.in 完成。
+为了获得一个绑定到控制台的字符流，你可以把 System.in 包装在一个 BufferedReader 对象中来创建一个字符流。
+下面是创建 BufferedReader 的基本语法：
+BufferedReader br = new BufferedReader(new 
+                      InputStreamReader(System.in));
+BufferedReader 对象创建后，我们便可以使用 read() 方法从控制台读取一个字符，或者用 readLine() 方法读取一个字符串。
+
+从控制台读取多字符输入
+从 BufferedReader 对象读取一个字符要使用 read() 方法，它的语法如下：
+int read( ) throws IOException
+
+24FileInputStream
+该流用于从文件读取数据，它的对象可以用关键字 new 来创建。
+有多种构造方法可用来创建对象。
+可以使用字符串类型的文件名来创建一个输入流对象来读取文件：
+InputStream f = new FileInputStream("C:/java/hello");
+也可以使用一个文件对象来创建一个输入流对象来读取文件。我们首先得使用 File() 方法来创建一个文件对象：
+File f = new File("C:/java/hello");
+InputStream out = new FileInputStream(f);
+创建了InputStream对象，就可以使用下面的方法来读取流或者进行其他的流操作。
